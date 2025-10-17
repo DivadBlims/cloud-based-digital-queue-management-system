@@ -11,7 +11,7 @@ This expanded analysis will provide a deep dive into the DQMS, moving beyond the
 
 To fully appreciate the innovation of the DQMS, one must first understand the profound inefficiencies inherent in traditional queuing systems. These problems affect both the customer and the service institution.
 
-2.1. The Customer's Plight
+### 2.1. The Customer's Plight
 
 For the individual, a physical queue represents a significant cost in time and well-being.
 
@@ -23,7 +23,7 @@ Physical Discomfort: Standing for extended periods in crowded spaces causes phys
 
 Zero Flexibility: The "all-or-nothing" nature of a physical line means leaving it results in a lost position, locking individuals into one location and preventing them from attending to other tasks.
 
-2.2. The Organization's Burden
+### 2.2. The Organization's Burden
 
 For the service provider, manual queue management is operationally inefficient and costly.
 
@@ -41,11 +41,11 @@ The DQMS is designed from the ground up to systematically eliminate these pain p
 
 The DQMS is built on a modern, multi-tiered architecture that ensures scalability, reliability, and performance. Its design cleanly separates the user interface, the business logic, and the data layer.
 
-3.1. The Frontend: Responsive Web Application
+### 3.1. The Frontend: Responsive Web Application
 
 This is the user-facing part of the system, accessible via a web browser.
 
-Technology Stack:
+#### Technology Stack:
 
 React.js: A powerful JavaScript library for building dynamic user interfaces. Its component-based structure is perfect for creating reusable elements like the ticket display and booking form. Its efficient update mechanism is crucial for real-time queue tracking.
 
@@ -61,11 +61,11 @@ Real-time queue position dashboard
 
 Admin login portal
 
-3.2. The Backend: Application Logic & Server
+### 3.2. The Backend: Application Logic & Server
 
 The backend is the engine room of the DQMS, processing all requests and managing queue logic.
 
-Technology Stack:
+#### Technology Stack:
 
 Option A: Node.js with Express.js. Ideal for real-time applications due to its non-blocking, event-driven architecture, efficiently handling many simultaneous connections.
 
@@ -79,7 +79,7 @@ Queue Engine: The core logic for creating queues, generating tickets, and advanc
 
 Real-Time Notification Service: Uses WebSockets (e.g., Socket.IO) to maintain a live connection to users' browsers, pushing instant updates when the queue moves.
 
-3.3. The Database: Cloud Data Management
+### 3.3. The Database: Cloud Data Management
 
 All system data is stored in a managed cloud database for reliability.
 
@@ -87,7 +87,7 @@ Option A: PostgreSQL. A robust relational SQL database. It ensures strong data c
 
 Option B: MongoDB Atlas. A flexible NoSQL database. It allows for storing complex data (like an entire queue) in a single document, which can be efficient for reading data. It excels in horizontal scaling.
 
-3.4. The Infrastructure: Cloud Hosting
+### 3.4. The Infrastructure: Cloud Hosting
 
 The entire system is deployed on a cloud platform like AWS, Google Cloud, or Microsoft Azure.
 
@@ -103,7 +103,7 @@ This cloud-native approach guarantees high availability, security, and the abili
 
 ## Chapter 4: How the System Works: User & Admin Workflows
 
-4.1. A Customer's Journey: From Booking to Service
+### 4.1. A Customer's Journey: From Booking to Service
 
 Let's follow Alice, who needs to visit a government office.
 
@@ -117,7 +117,7 @@ Waiting & Notification: Alice is free to wait comfortably elsewhere. Her queue d
 
 Service: Alice arrives at the counter and is served. The admin marks her ticket as complete, and the queue advances automatically.
 
-4.2. An Administrator's Workflow: Managing the Queue
+### 4.2. An Administrator's Workflow: Managing the Queue
 
 Bob, a staff member, uses the Admin Dashboard.
 
@@ -140,7 +140,7 @@ Reporting: After the shift, Bob generates a report showing Average Wait Time, Nu
 The cloud-based nature of the DQMS is its greatest strength, enabling a suite of powerful features.
 
 
- Cloud Features Table
+#### Cloud Features Table
 
 
 | Feature            | Technical Implementation              | Business Benefit                                                                              |
@@ -156,15 +156,15 @@ The cloud-based nature of the DQMS is its greatest strength, enabling a suite of
 
 A realistic analysis must consider potential hurdles and their solutions.
 
-Challenge: Digital Literacy and Access
+ Challenge: Digital Literacy and Access
 
-Problem: Not all customers have smartphones or the skill to use them for this purpose.
+ Problem: Not all customers have smartphones or the skill to use them for this purpose.
 
-Mitigation: Maintain a help desk/kiosk for onboarding. Integrate USSD codes for low-tech notifications. The QR code scan itself is a very simple entry point.
+ Mitigation: Maintain a help desk/kiosk for onboarding. Integrate USSD codes for low-tech notifications. The QR code scan itself is a very simple entry point.
 
-Challenge: Network Dependency
+ Challenge: Network Dependency
 
-Problem: The system requires a stable internet connection. An outage could halt operations.
+ Problem: The system requires a stable internet connection. An outage could halt operations.
 
 Mitigation: Implement a lightweight offline mode for admin counters, allowing them to call "next" for a limited time. Cloud infrastructure is inherently more reliable than local servers.
 
@@ -180,7 +180,7 @@ Problem: Storing user data (e.g., phone numbers) must be handled responsibly.
 
 Mitigation: Enforce data encryption, establish clear retention policies, and anonymize data used for analytics.
 
- Challenges and Solutions Table
+ #### Challenges and Solutions Table
 
 | Challenge                  | Problem Description                                               | Mitigation Strategy                                                            |
 | :------------------------- | :---------------------------------------------------------------- | :----------------------------------------------------------------------------- |
@@ -210,7 +210,7 @@ AI-Powered Predictions: Using historical data to forecast wait times with high a
 
 Multi-Language Support: Adding French and local languages to maximize inclusivity in Cameroon.
 
- Future Enhancements Table
+ #### Future Enhancements Table
 
 | Enhancement Category    | Specific Feature                | Potential Benefit                                                        |
 | :---------------------- | :------------------------------ | :----------------------------------------------------------------------- |
@@ -226,11 +226,11 @@ The Cloud-Based Digital Queue Management System presents a powerful and practica
 
 While challenges related to digital access and user behavior exist, they are not insurmountable and can be effectively mitigated through thoughtful design and policy. The ultimate value of the DQMS lies in its potential to act as a catalyst for broader digital transformation, fostering a more efficient, transparent, and citizen-friendly service environment. For institutions in Cameroon and beyond, implementing such a system is a clear declaration of a commitment to progress and quality service in the 21st century.
 
-Appendix: Simplified Database Schema
+#### Appendix: Simplified Database Schema
 
 A proposed schema for a PostgreSQL implementation of the DQMS.
 
- Database Schema Table
+ #### Database Schema Table
 
 
 | Table Name | Primary Purpose                     | Key Fields (Examples)                                           |
@@ -243,7 +243,7 @@ A proposed schema for a PostgreSQL implementation of the DQMS.
 | counters   | Manages physical service points     | counter_id, counter_name, current_ticket_id, is_online          |
 
 
- Technology Comparison Table
+ #### Technology Comparison Table
 
 
 | Component            | Option 1               | Option 2                 | Key Differentiators                                      |
@@ -255,7 +255,7 @@ A proposed schema for a PostgreSQL implementation of the DQMS.
 | Real-Time Technology | WebSockets (Socket.IO) | Server-Sent Events (SSE) | WebSockets: bidirectional; SSE: server-to-client only    |
 
 
- Implementation Timeline Table
+ #### Implementation Timeline Table
 
 | Phase             | Duration | Key Activities                                                    | Deliverables                                  |
 | :---------------- | :------- | :---------------------------------------------------------------- | :-------------------------------------------- |
