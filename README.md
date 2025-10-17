@@ -152,7 +152,7 @@ The cloud-based nature of the DQMS is its greatest strength, enabling a suite of
 | High Availability  | Multi-Zone Deployment, Load Balancers | 99.9% Uptime: The service is reliable and almost always online, crucial for daily operations. |
 | Cost-Effectiveness | Pay-as-You-Go Pricing                 | Low Overhead: No large upfront server costs; pay only for the resources you use.              |
 
-### Chapter 6: Challenges, Limitations & Mitigations
+## Chapter 6: Challenges, Limitations & Mitigations
 
 A realistic analysis must consider potential hurdles and their solutions.
 
