@@ -1,0 +1,156 @@
+syntax = "proto3";
+
+package blimsphere;
+
+// Authentication Service
+service AuthenticationService {
+    // User enrollment/registration
+    rpc Enroll(EnrollRequest) returns (EnrollResponse);
+    
+    // Login with username and password
+    rpc Login(LoginRequest) returns (LoginResponse);
+    
+    // Request OTP for login
+    rpc RequestOTP(OTPRequest) returns (OTPResponse);
+    
+    // Verify OTP
+    rpc VerifyOTP(VerifyOTPRequest) returns (VerifyOTPResponse);
+}
+
+// File Operations Service
+service FileService {
+    // Upload file
+    rpc UploadFile(stream FileChunk) returns (UploadResponse);
+    
+    // Download file
+    rpc DownloadFile(DownloadRequest) returns (stream FileChunk);
+    
+    // List user files
+    rpc ListFiles(ListFilesRequest) returns (ListFilesResponse);
+    
+    // Get storage information
+    rpc GetStorageInfo(StorageInfoRequest) returns (StorageInfoResponse);
+    
+    // Delete file
+    rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse);
+}
+
+// ============ Authentication Messages ============
+
+message EnrollRequest {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message EnrollResponse {
+    bool success = 1;
+    string message = 2;
+    string user_id = 3;
+}
+
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    bool success = 1;
+    string message = 2;
+    string session_token = 3;
+    string user_id = 4;
+    bool requires_otp = 5;  // If true, user needs to verify OTP
+}
+
+message OTPRequest {
+    string username = 1;
+    string email = 2;
+}
+
+message OTPResponse {
+    bool success = 1;
+    string message = 2;
+    string otp_code = 3;  // For testing, in production this should not be sent
+}
+
+message VerifyOTPRequest {
+    string username = 1;
+    string otp_code = 2;
+}
+
+message VerifyOTPResponse {
+    bool success = 1;
+    string message = 2;
+    string session_token = 3;
+    string user_id = 4;
+}
+
+// ============ File Operation Messages ============
+
+message FileChunk {
+    string file_id = 1;
+    string filename = 2;
+    int64 chunk_index = 3;
+    bytes data = 4;
+    int64 total_chunks = 5;
+    string session_token = 6;  // For authentication
+    string checksum = 7;
+}
+
+message UploadResponse {
+    bool success = 1;
+    string message = 2;
+    string file_id = 3;
+    int64 file_size = 4;
+}
+
+message DownloadRequest {
+    string file_id = 1;
+    string session_token = 2;
+}
+
+message ListFilesRequest {
+    string session_token = 1;
+}
+
+message FileInfo {
+    string file_id = 1;
+    string filename = 2;
+    int64 file_size = 3;
+    string uploaded_at = 4;
+    string mime_type = 5;
+}
+
+message ListFilesResponse {
+    bool success = 1;
+    string message = 2;
+    repeated FileInfo files = 3;
+}
+
+message StorageInfoRequest {
+    string session_token = 1;
+}
+
+message StorageInfoResponse {
+    bool success = 1;
+    double used_gb = 2;
+    double remaining_gb = 3;
+    double total_gb = 4;
+    double usage_percent = 5;
+}
+
+message DeleteFileRequest {
+    string file_id = 1;
+    string session_token = 2;
+}
+
+message DeleteFileResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+
+
+
+
+
